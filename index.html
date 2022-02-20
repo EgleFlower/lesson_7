@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/nullstyle.css">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Lesson7</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<h1 class="title">Как работает оперативная память и зачем она нужна</h1>
+			<p class="text-1">ОЗУ (оперативное запоминающее устройство), оно же RAM ("Random Access Memory" - память с произвольным доступом), представляет собой область временного хранения данных, при помощи которой обеспечивается функционирование программного обеспечения. Физически, оперативная память в системе представляет собой набор микросхем или модулей (содержащих микросхемы), которые обычно подключаются к системной плате.</p>
+			<p class="text-3">В процессе работы память выступает в качестве временного буфера (в ней хранятся данные и запущенные программы) между дисковыми накопителями и процессором, благодаря значительно большей скорости чтения и записи данных.</p>
+			<p class="text-2">По своей структуре память напоминает пчелиные соты, т.е. состоит из ячеек, каждая из которых предназначена для хранения мёда определенного объема данных, как правило, одного или четырех бит. Каждая ячейка оной имеет свой уникальный «домашний» адрес, который делится на два компонента – адрес горизонтальной строки (Row) и вертикального столбца (Column).</p>
+			<p class="text-4">Ячейки представляют собой конденсаторы, способные накапливать электрический заряд. С помощью специальных усилителей аналоговые сигналы переводятся в цифровые, которые в свою очередь образуют данные.</p>
+			<p class="text">Для передачи на микросхему памяти адреса строки служит некий сигнал, который зовется RAS (Row Address Strobe), а для адреса столбца — сигнал CAS (Column Address Strobe).</p>
+			<h2 class="subtitle">Как же работает оперативная память?</h2>
+			<p class="text-9">Работа оперативной памяти непосредственно связана с работой процессора и внешних устройств компьютера, так как именно ей последние «доверяют» свою информацию. Таким образом, данные сперва попадают с жесткого диска (или другого носителя) в саму ОЗУ и уже затем обрабатываются центральным процессором (смотрите изображение).</p>
+			<img src="img/img1.jpg" alt="Системная шина">
+			<p class="text">Обмен данными между процессором и памятью может происходить напрямую, но чаще все же бывает с участием кэш-памяти.</p>
+			<p class="text-7">Кэш-память является местом временного хранения наиболее часто запрашиваемой информации и представляет собой относительно небольшие участки быстрой локальной памяти. Её использование позволяет значительно уменьшить время доставки информации в регистры процессора, так как быстродействие внешних носителей (оперативки и дисковой подсистемы) намного хуже процессорного. Как следствие, уменьшаются, а часто и полностью устраняются, вынужденные простои процессора, что повышает общую производительность системы.</p>
+			<p class="text">Оперативной памятью управляет контроллер, который находится в чипсете материнской платы, а точнее в той его части, которая называется North Bridge (северный мост) - он обеспечивает подключение CPU (процессора) к узлам, использующим высокопроизводительные шины: ОЗУ, графический контроллер (смотрите изображение).</p>
+			<img src="img/img2.jpg" alt="схема ОЗУ">
+			<h2 class="subtitle">Зачем нужна эта самая оперативная память?</h2>
+			<p class="text-5">Как мы уже знаем, обмен данными между процессором и памятью происходит чаще всего с участием кэш-памяти. В свою очередь, ею управляет специальный контроллер, который, анализируя выполняемую программу, пытается предвидеть, какие данные и команды вероятнее всего понадобятся в ближайшее время процессору, и подкачивает их, т.е. кэш-контроллер загружает в кэш-память нужные данные из оперативной памят­и, и возвращает, когда нужно, модифицирован­ные процессором данные в оперативку.</p>
+			<p class="text-6">После процессора, оперативную память можно считать самым быстродействующим устройством. Поэтому основной обмен данными и происходит между этими двумя девайсами. Вся информация в персональном компьютере хранится на жестком диске. При включении компа в ОЗУ с винта записываются драйверы, специальные программы и элементы операционной системы. Затем туда записываются те программы – приложения, которые мы будем запускать, при закрытии последних они будут стерты из оной.</p>
+			<p class="text">Данные, записанные в оперативной памяти, передаются в CPU (он же не раз упомянутый процессор, он же Central Processing Unit), там обрабатываются и записываются обратно. И так постоянно: дали команду процессору взять биты по таким-то адресам (как то: обработатьих и вернуть на место или записать на новое) – он так и сделал (смотрите изображение).</p>
+			<img src="img/img3.jpg" alt="ОЗУ">
+			<span class="text">Все это хорошо до тех пор, пока ячеек памяти (1) хватает. А если нет?</span>
+			<span class="text">Тогда в работу вступает файл подкачки (2). Этот файл расположен на жестком диске и туда записывается все, что не влезает в ячейки оперативной памяти. Поскольку быстродействие винта значительно ниже ОЗУ, то работа файла подкачки сильно замедляет работу системы. Кроме этого, это снижает долговечность самого жесткого диска. Но это уже совсем другая история.</span>
+			<h2 class="subtitle">Компоновка модулей</h2>
+			<p class="text">Кстати, давайте рассмотрим из чего же состоит (из каких элементов) сам модуль.</p>
+			<p class="text-8">Так как практически все модули памяти, состоят из одних и тех же конструктивных элементов, мы для наглядности возьмем стандарт SD-RAM (для настольных компьютеров). На изображении специально приведено разное конструктивное исполнение оных (чтобы Вы знали не только «шаблонное» исполнение модуля, но и весьма «экзотическое»).</p>
+			<p class="text">Итак, модули стандарта SD-RAM (1): DDR (1.1); DDR2 (1.2).</p>
+			<img class="inline-block" src="img/img5.jpg" alt="DDR">
+			<div class="block">Описание:</div>
+			<ul class="list">
+				<li>Чипы (микросхемы) памяти</li>
+				<li>SPD (Serial Presence Detect) – микросхема энергонезависимой памяти, в которую записаны базовые настройки любого модуля. Во время старта системы BIOS материнской платы считывает информацию, отображенную в SPD, и выставляет соответствующие тайминги и частоту работы ОЗУ;</li>
+				<li>«Ключ» - специальная прорезь платы, по которой можно определить тип модуля. Механически препятствует неверной установке плашек в слоты, предназначенные для оперативной памяти;</li>
+				<li>SMD-компоненты модулей (резисторы, конденсаторы). Обеспечивают электрическую развязку сигнальных цепей и управление питанием чипов;</li>
+				<li>Cтикеры производителя - указывают стандарт памяти, штатную частоту работы и базовые тайминги;</li>
+				<li>РСВ – печатная плата. На ней распаиваются остальные компоненты модуля. От качества зачастую зависит результат разгона: на разных платах одинаковые чипы могут вести себя по-разному.</li>
+			</ul>
+			<p class="text10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto non harum, itaque provident ea sit iste aut at atque nostrum recusandae iure nulla minus minima repellat! Possimus ipsum voluptate quidem, blanditiis neque amet natus fuga, at necessitatibus non tenetur libero asperiores ratione deleniti quas inventore pariatur quam provident distinctio magnam quis officiis ipsam? Quasi, alias voluptatem facilis distinctio quod sunt nesciunt fugit optio quo harum cumque deserunt. Nostrum, doloremque. Aut rerum rem optio soluta labore autem minima cumque debitis praesentium odit reprehenderit animi incidunt, distinctio quos facere totam possimus blanditiis accusantium quia quas. Harum asperiores, et veritatis corporis rem rerum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto non harum, itaque provident ea sit iste aut at atque nostrum recusandae iure nulla minus minima repellat! Possimus ipsum voluptate quidem, blanditiis neque amet natus fuga, at necessitatibus non tenetur libero asperiores ratione deleniti quas inventore pariatur quam provident distinctio magnam quis officiis ipsam? Quasi, alias voluptatem facilis distinctio quod sunt nesciunt fugit optio quo harum cumque deserunt. Nostrum, doloremque. Aut rerum rem optio soluta labore autem minima cumque debitis praesentium odit reprehenderit animi incidunt, distinctio quos facere totam possimus blanditiis accusantium quia quas. Harum asperiores, et veritatis corporis rem rerum? Architecto non harum, itaque provident ea sit iste aut at atque nostrum recusandae iure nulla minus minima repellat! Possimus ipsum voluptate quidem, blanditiis neque amet natus fuga, at necessitatibus non tenetur libero asperiores ratione deleniti quas inventore pariatur quam provident distinctio magnam quis officiis ipsam? Quasi, alias voluptatem facilis distinctio quod sunt nesciunt fugit optio quo harum cumque deserunt. Nostrum, doloremque. Aut rerum rem optio soluta labore autem minima cumque debitis praesentium odit reprehenderit animi incidunt, distinctio quos facere totam possimus blanditiis accusantium quia quas. Harum asperiores, et veritatis corporis rem rerum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto non harum, itaque provident ea sit iste aut at atque nostrum recusandae iure nulla minus minima repellat! Possimus ipsum voluptate quidem, blanditiis neque amet natus fuga, at necessitatibus non tenetur libero asperiores ratione deleniti quas inventore pariatur quam provident distinctio magnam quis officiis ipsam? Quasi, alias voluptatem facilis distinctio quod sunt nesciunt fugit optio quo harum cumque deserunt. Nostrum, doloremque. Aut rerum rem optio soluta labore autem minima cumque debitis praesentium odit reprehenderit animi incidunt, distinctio quos facere totam possimus blanditiis accusantium quia quas. Harum asperiores, et veritatis corporis rem rerum?</p>
+			<ul class="bg-list">
+				<li class="bgitem-list">Чипы (микросхемы) памяти</li>
+				<li class="bgitem-list">SPD (Serial Presence Detect) – микросхема энергонезависимой памяти, в которую записаны базовые настройки любого модуля. Во время старта системы BIOS материнской платы считывает информацию, отображенную в SPD, и выставляет соответствующие тайминги и частоту работы ОЗУ;</li>
+				<li class="bgitem-list">«Ключ» - специальная прорезь платы, по которой можно определить тип модуля. Механически препятствует неверной установке плашек в слоты, предназначенные для оперативной памяти;</li>
+				<li class="bgitem-list">SMD-компоненты модулей (резисторы, конденсаторы). Обеспечивают электрическую развязку сигнальных цепей и управление питанием чипов;</li>
+				<li class="bgitem-list">Cтикеры производителя - указывают стандарт памяти, штатную частоту работы и базовые тайминги;</li>
+				<li class="bgitem-list">РСВ – печатная плата. На ней распаиваются остальные компоненты модуля. От качества зачастую зависит результат разгона: на разных платах одинаковые чипы могут вести себя по-разному.</li>
+			</ul>
+		</main>
+	</div>
+</body>
+
+</html>
